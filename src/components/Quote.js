@@ -1,20 +1,33 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import {getQuotes} from '../redux/actions/quotesActions';
 import { connect } from 'react-redux';
 
 import styles from './Quote.module.scss';
 
-const Component = ({className, getQuotes, quotes, error, loading}) => {
+function usePrevious(value) {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value;
+  });
+  return ref.current;
+}
+
+
+const Component = ({getQuotes, quotes, error, loading}) => {
   const [quote, setQuote] = useState('');
-  console.log(quote);
+  const prevQuote = usePrevious(quote);
   useEffect(() => {
     window.scrollTo(0,0);
     getQuotes();
   }, [getQuotes]);
   const generateRandomQuote = () => {
     const random = Math.floor(Math.random() * quotes.length);
-    setQuote(() => quotes[random]);
+    const randomQuote = quotes[random];
+    setQuote(() => randomQuote);
+  };
+  const generatePrevQuote = () => {
+    setQuote(() => prevQuote);
   };
   return (
     <div className={styles.root}>
@@ -24,7 +37,7 @@ const Component = ({className, getQuotes, quotes, error, loading}) => {
         <h2>{error}</h2>
       ) : (
         <div className={styles.container}>
-          <button>Prev</button>
+          <button onClick={generatePrevQuote}>Prev</button>
           <button onClick={generateRandomQuote}>Next</button>
           <h1>{quote.quote}</h1>
           <h3>{quote.author}</h3>
