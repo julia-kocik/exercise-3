@@ -1,4 +1,4 @@
-## PORTFOLIO
+## EXERCISE-3
 https://julia-kocik.github.io/exercise-3/
 
 ### Features and stack
