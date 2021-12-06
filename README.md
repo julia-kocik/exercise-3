@@ -1,3 +1,14 @@
+## PORTFOLIO
+https://julia-kocik.github.io/exercise-3/
+
+### Features and stack
+
+- @reactJS
+- @react-hooks
+- @redux
+- @redux-thunk
+- @axios
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

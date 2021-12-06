@@ -37,10 +37,14 @@ const Component = ({getQuotes, quotes, error, loading}) => {
         <h2>{error}</h2>
       ) : (
         <div className={styles.container}>
-          <button onClick={generatePrevQuote}>Prev</button>
-          <button onClick={generateRandomQuote}>Next</button>
-          <h1>{quote.quote}</h1>
-          <h3>{quote.author}</h3>
+          <div className={styles.quote_box}>
+            <h1>{quote !== '' ? quote.quote : quotes[0].quote}</h1>
+            <h3>{quote !== '' ? quote.author : quotes[0].quote}</h3>
+          </div>
+          <div className={styles.button_box}>
+            <button onClick={generatePrevQuote}>Prev</button>
+            <button onClick={generateRandomQuote}>Next</button>
+          </div>   
         </div>  
       )}
     </div>
