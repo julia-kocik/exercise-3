@@ -39,7 +39,7 @@ const Component = ({getQuotes, quotes, error, loading}) => {
         <div className={styles.container}>
           <div className={styles.quote_box}>
             <h1>{quote !== '' ? quote.quote : quotes[0].quote}</h1>
-            <h3>{quote !== '' ? quote.author : quotes[0].quote}</h3>
+            <h3>{quote !== '' ? quote.author : quotes[0].author}</h3>
           </div>
           <div className={styles.button_box}>
             <button onClick={generatePrevQuote}>Prev</button>
